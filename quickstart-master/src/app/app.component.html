@@ -1,0 +1,47 @@
+<div>
+        <!--<nav *ngIf="logggedIn || userRole" class='navbar navbar-default'>-->
+    <nav *ngIf="logggedIn " class='navbar navbar-inverse'>
+        <div *ngIf="userRole === 1" class='container-fluid'>
+                <a class='navbar-brand'>SuperAdmin</a>
+                <ul class='nav navbar-nav'>
+                    <!--<li><a [routerLink]="['/getusers']">Users List</a></li>-->
+                     <li><a [routerLink]="['/getadminslist']">Admins List</a></li>
+
+                     <li><a [routerLink]="['/addusers']">Register Admin/Users</a></li>
+
+                       <li><a (click)="logOut()" class="pull-right ptr">Logout</a></li>
+                </ul>
+            </div>
+
+        <div *ngIf="userRole === 2" class='container-fluid'>
+                <a class='navbar-brand'>Admin</a>
+                <ul class='nav navbar-nav ptr'>
+            
+                    <li><a [routerLink]="['/getadminUserslist/',primaryid]">Users List</a></li>
+
+                     <li><a [routerLink]="['/addusers']">Register Users</a></li>
+
+                       <li><a (click)="logOut()" class="pull-right">Logout</a></li>
+                </ul>
+            </div>
+
+        <div *ngIf="userRole === 3" class='container-fluid'>
+                <a class='navbar-brand'>Users</a>
+                <ul class='nav navbar-nav pull-right ptr'>
+
+                       <li><a (click)="logOut()">Logout</a></li>
+                </ul>
+            </div>
+
+        </nav>
+        <div class='container'>
+           
+            <router-outlet></router-outlet>
+        </div>
+</div>
+
+<!--<login-page></login-page>-->
+<!--<my-student></my-student>
+<add-users></add-users>-->
+
+					

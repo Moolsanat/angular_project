@@ -1,0 +1,51 @@
+<div class='panel panel-default'>
+    <div class='panel-heading'>
+        Admins List
+    </div>
+ <div class='panel-body'>
+
+  <div class='table-responsive'>
+  <table class='table'>
+      <thead>
+            <tr>
+                       <th>First Name</th>
+                       <th>Last Name</th>
+                       <th>Username</th>
+                       <th>Email</th>
+                       <th>Password</th>
+                       <!--<th>Role</th>-->
+                       <th>Created Date</th>
+                       <!--<th>Created By</th>-->
+                       <th>Action</th>
+                       
+
+              </tr>
+        </thead>
+                  <tbody>
+                       <tr *ngFor = "let item of adminusers">
+                         
+                         <td>{{item.firstname}}</td>
+
+                         <td>{{item.lastname}}</td>
+
+                         <td>{{item.username}}</td>
+
+                         <td>{{item.email}}</td>
+
+                         <td>{{item.password}}</td>
+
+                         <!--<td>{{item.name}}</td>-->
+                         <td>{{item.created_date}}</td>
+                         <!--<td>{{item.created_by}}</td>-->
+
+                         <td ><a  class="ptr" (click)="editData(item.id)">Edit </a>
+                              <a  class="ptr" mwlConfirmationPopover [title]="'Delete'" [message]="'Are you sure to delete this user?'"
+							 placement="left" (confirm)="delete(item.id)" tooltip="Delete"> Delete </a>
+                              <a  class="ptr" (click)="getusersforAdmin(item.id)"> Users</a></td>
+                        
+                     </tr>
+                  </tbody>
+              </table>
+              </div>
+        </div>
+</div>

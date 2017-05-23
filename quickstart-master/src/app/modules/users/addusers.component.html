@@ -1,0 +1,54 @@
+<form ngNativeValidate>
+<div class="form-group"> 
+    <label class ="form-label " >First name</label>
+    <input type="text" class ="form-control" required [ngModel]="userdetail?.firstname" (ngModelChange)="userdetail.firstname=$event" name ="userdetail.firstname" >
+</div>
+<div class="form-group"> 
+    <label class ="form-label" >Last name</label>
+    <input type="text"class ="form-control "  required [ngModel]="userdetail?.lastname" (ngModelChange)="userdetail.lastname=$event" name ="userdetail.lastname">
+</div>
+<div class="form-group"> 
+    <label class ="form-label ">Username</label>
+    <input type="text" class ="form-control" required [ngModel]="userdetail?.username" (ngModelChange)="userdetail.username=$event"  name ="userdetail.username">
+</div>
+<div class="form-group"> 
+    <label class ="form-label">Email</label>
+    <input type="text" class ="form-control" required [ngModel]="userdetail?.email" (ngModelChange)="userdetail.email=$event" name ="userdetail.email">
+</div>
+<div class="form-group"> 
+    <label class ="form-label">Password</label>
+    <input type="password"class ="form-control" required [ngModel]="userdetail?.password" (ngModelChange)="userdetail.password=$event" name ="userdetail.password" >
+</div>
+<div class="form-group" *ngIf = "roleid == 1"> 
+     <label class ="form-label">Role</label>
+    <select class ="form-control" required [ngModel]="userdetail?.role" (ngModelChange)="userdetail.role=$event" name ="userdetail.role">
+  
+  <option  value="2">admin</option>
+  <option  value="3">users</option>
+</select>
+   
+</div>
+<!--<div> 
+    <label class ="form-label">Created Date</label>
+    <input type="text" class ="form-control" [ngModel]="userdetail?.created_date" (ngModelChange)="userdetail.created_date=$event" >
+</div>-->
+<!--<div> 
+    <label class ="form-label">Created By</label>
+    <input type="text" class ="form-control" [(ngModel)]="userdetail.created_by">
+</div>-->
+<div class="form-group" *ngIf="userdetail && roleid!==2"> 
+    <div *ngIf="userdetail.role==3">
+     <label class ="form-label">Assigned Admin</label>
+     
+    <select  class ="form-control" required [ngModel]="userdetail?.created_by" (ngModelChange)="userdetail.created_by=$event" name ="userdetail.created_by">
+  
+        <option *ngFor="let items of adminusers" value={{items.id}}>{{items.username}}</option>
+  
+     </select>
+    </div>
+</div>
+
+
+
+  <button class ="btn btn-primary" (click)="saveuser()" style="margin-top:5px;"> save</button>
+</form>
